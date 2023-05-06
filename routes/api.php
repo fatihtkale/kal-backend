@@ -27,6 +27,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
+Route::post('task', [TaskController::class, 'create']);
+Route::put('task/{id}', [TaskController::class, 'update']);
+Route::delete('task/{id}', [TaskController::class, 'delete']);
+Route::post('task/publish/{id}', [TaskController::class, 'setPublic']);
+Route::delete('task/publish/{id}', [TaskController::class, 'removePublic']);
+
 Route::get('validate-token', function () {
     return ['error' => 'Token is valid'];
 })->middleware('auth:api');
