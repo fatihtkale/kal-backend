@@ -36,6 +36,13 @@ Route::middleware(['apiUserAuth'])->group(function () {
     Route::post('task/publish/{id}', [TaskController::class, 'setPublic']);
     Route::delete('task/publish/{id}', [TaskController::class, 'removePublic']);
 
+    // Fields
+    Route::get('fields', [FieldsController::class, 'index']);
+    Route::get('field/{id}', [FieldsController::class, 'single']);
+    Route::post('field', [FieldsController::class, 'create']);
+    Route::put('field/{id}', [FieldsController::class, 'update']);
+    Route::delete('field/{id}', [FieldsController::class, 'delete']);
+
     // Comments
     Route::get('comments/{task_id}', [CommentController::class, 'index']);
     Route::post('comment', [CommentController::class, 'create']);
