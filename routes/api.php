@@ -29,11 +29,16 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('opgave/{token}', [TaskController::class, 'publicTask']);
 
 Route::middleware(['apiUserAuth'])->group(function () {
+    // Task
     Route::post('task', [TaskController::class, 'create']);
     Route::put('task/{id}', [TaskController::class, 'update']);
     Route::delete('task/{id}', [TaskController::class, 'delete']);
     Route::post('task/publish/{id}', [TaskController::class, 'setPublic']);
     Route::delete('task/publish/{id}', [TaskController::class, 'removePublic']);
+
+    // Comments
+    Route::get('comments/{task_id}', [CommentController::class, 'index']);
+    Route::post('comment', [CommentController::class, 'create']);
 
     // Calendar
     Route::get('calendar/month', [CalendarController::class, 'getNowMonth']);
