@@ -56,6 +56,12 @@ Route::middleware(['apiUserAuth'])->group(function () {
 
     Route::get('calendar/day', [CalendarController::class, 'getToday']);
     Route::get('calendar/day/{day}', [CalendarController::class, 'getByDay']);
+
+    // Search
+    Route::post('search', [SearchController::class, 'search']);
+
+    // Data calculation
+    Route::post('data/search', [SearchController::class, 'dataSearch']);
 });
 
 Route::get('validate-token', function () {
